@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  --bg-base: #030712;
+  --bg-panel: rgba(15, 23, 42, 0.72);
+  --border-subtle: rgba(148, 163, 184, 0.12);
+  --accent-primary: #6366f1;
+  --accent-glow: rgba(99, 102, 241, 0.35);
+  --text-muted: #94a3b8;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg-base);
+  color: #f1f5f9;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.18), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(14, 165, 233, 0.08), transparent);
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+}
+
+.glass-panel {
+  background: var(--bg-panel);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+@keyframes flow-packet {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #94a3b8 0%, #e2e8f0 50%, #94a3b8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(30, 41, 59, 0.9);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 12px var(--accent-glow);
+  cursor: pointer;
+}
+
+input[type="range"]:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.6);
+  border-radius: 999px;
+}
